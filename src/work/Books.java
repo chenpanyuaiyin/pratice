@@ -54,12 +54,12 @@ public class Books {
 
 
     }
-    private void updataData(String book_name,String name,String publishers,String author){
+    private void updataData(String bookName,String name,String publishers,String author){
         Connection connection=null;
         Statement statement=null;
         try {
             connection=getconnection();
-            String sql ="update book set book_name='"+name+"',book_publishers='"+publishers+"',book_author='"+author+"'  where book_name='"+book_name+"'";
+            String sql ="update book set book_name='"+name+"',book_publishers='"+publishers+"',book_author='"+author+"'  where book_name='"+bookName+"'";
             statement=connection.createStatement();
             //4.获取执行所影响的行数，判断是否执行成功
             int rows = statement.executeUpdate(sql);
@@ -105,16 +105,16 @@ public class Books {
             //遍历结果集
             int index=0;
             while (resultSet.next()){
-                int ID=resultSet.getInt("id");
-                String book_name=resultSet.getString("book_name");
-                String book_publishers=resultSet.getString("book_publishers");
-                String book_author=resultSet.getString("book_author");
-                Date creat_time=resultSet.getDate("creat_time");
-                datas [index][0]=ID+"";
-                datas [index][1]=book_name+"";
-                datas [index][2]=book_publishers+"";
-                datas [index][3]=book_author+"";
-                datas [index][4]=creat_time+"";
+                int id=resultSet.getInt("id");
+                String name=resultSet.getString("book_name");
+                String publishers=resultSet.getString("book_publishers");
+                String author=resultSet.getString("book_author");
+                Date time=resultSet.getDate("creat_time");
+                datas [index][0]=id+"";
+                datas [index][1]=name+"";
+                datas [index][2]=publishers+"";
+                datas [index][3]=author+"";
+                datas [index][4]=time+"";
                 index++;
             }
         } catch (SQLException e) {
@@ -124,8 +124,6 @@ public class Books {
         }return datas;
     }
     private  void findAllData(){
-
-        //构建查询的数据库语句
         String [][] datas =bestFindAllData();
         //遍历结果集
         StringBuffer buffer=new StringBuffer();
@@ -160,16 +158,16 @@ public class Books {
             //遍历结果集
             int index=0;
             while (resultSet.next()){
-                int ID=resultSet.getInt("id");
-                String book_name=resultSet.getString("book_name");
-                String book_publishers=resultSet.getString("book_publishers");
-                String book_author=resultSet.getString("book_author");
-                Date creat_time=resultSet.getDate("creat_time");
-                datas [index][0]=ID+"";
-                datas [index][1]=book_name+"";
-                datas [index][2]=book_publishers+"";
-                datas [index][3]=book_author+"";
-                datas [index][4]=creat_time+"";
+                int id=resultSet.getInt("id");
+                String name=resultSet.getString("book_name");
+                String publishers=resultSet.getString("book_publishers");
+                String author=resultSet.getString("book_author");
+                Date time=resultSet.getDate("creat_time");
+                datas [index][0]=id+"";
+                datas [index][1]=name+"";
+                datas [index][2]=publishers+"";
+                datas [index][3]=author+"";
+                datas [index][4]=time+"";
                 index++;
             }
         } catch (SQLException e) {
